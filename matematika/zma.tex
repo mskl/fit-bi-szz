@@ -1,0 +1,326 @@
+% #################################################################################################
+\chapter{BI-ZMA, Základy matematické analýzy}
+% #################################################################################################
+
+% =========================================================
+\section{Background}
+
+\theorem[Může se hodit] Pro $a,b\in\mathbb{R}$ platí
+$$
+	a^{n+1}-b^{n+1}=(a-b)\sum_{k=0}^n a^{n-k}b^k.
+$$
+
+\definition[Posloupnost]\label{def:posloupnost} Zobrazení množiny $\mathbb{N}$ do množiny $\mathbb{R}$ nazýváme \textbf{reálná posloupnost}. Zapisujeme $(a_n)_{n=1}^{\infty}$.
+
+\definition[Limita posloupnosti] Reálná posloupnost $(a_n)_{n=1}^{\infty}$ má \textbf{limitu} $\alpha\in\overline{\mathbb{R}}$, právě když pro každé okolí $H_{\alpha}$ bodu $\alpha$ lze nalézt $n_0 \in \mathbb{N}$ takové, že pro všechna $n\in\mathbb{N}$ větší než $n_0$ platí $a_n\in H_{\alpha}$. V symbolech
+$$
+	(\forall H_{\alpha})(\exists n_0 \in \mathbb{N})(\forall n\in\mathbb{N})(n>n_0 \Rightarrow a_n \in H_{\alpha}).
+$$
+Značí se $\lim\limits_{n\rightarrow\infty} a_n=\alpha$ a bez pojmu okolí můžeme přepsat na
+$$
+	(\forall \varepsilon\in\mathbb{R},\varepsilon >0)(\exists n_0 \in \mathbb{N})(\forall n\in\mathbb{N})(n>n_0 \Rightarrow |a_n-\alpha| < \varepsilon).
+$$
+
+\definition[Konvergence posloupnosti]\label{def:konvergence} Buď $(a_n )_{n=1}^{\infty}$ posloupnost. Pokud pro její limitu platí $\lim\limits_{n\rightarrow\infty} a_n \in\mathbb {R}$, pak se nazývá \textbf{konvergentní}. V ostatních případech ji nazýváme \textbf{divergentní}.
+
+% =========================================================
+\section{34 -- Limita a derivace funkce (definice a vlastnosti, geometrický význam), využití při vyšetřování průběhu funkce.}
+
+\definition[Limita funkce]\label{def:limita} Buďte $f$ reálná funkce reálné proměnné a $a \in\overline{\mathbb{R}}$. Nechť $f$ je definovaná na okolí bodu $a$, s možnou výjimkou bodu $a$ samotného. Řekneme, že $c \in\overline{\mathbb{R}}$ je \textbf{limitou funkce $f$ v bodě $a$}, právě když pro každé okolí $H_c$ bodu $c$ existuje okolí $H_a$ bodu $a$ takové, že z podmínky
+$$
+	x\in H_a \setminus \{a\}
+$$
+plyne
+$$
+	f(x)\in H_c.
+$$
+V symboloch
+$$
+	(\forall H_c)(\exists H_a)(\forall x \in D_f)(x \in H_a \setminus \{a\} \Rightarrow f(x) \in H_c).
+$$
+Tuto skutečnost zapisujeme
+$$
+	\lim_{x\rightarrow a}f(x)=c,\quad \lim_a f=c.
+$$
+
+\definition[Limita funkce zleva/zprava] Buďte $f$ reálná funkce reálné proměnné a $a \in\mathbb {R}$. Nechť $f$ je definovaná na levém, resp. pravém, okolí bodu $a$. Řekneme, že $c \in\overline{\mathbb{R}}$ je \textbf{limitou funkce $f$ v bodě $a$ zleva, resp. zprava}, právě když
+$$
+	\lim_{x\rightarrow a_-}f(x)=c \Leftrightarrow (\forall H_c)(\exists H_a^{-})(\forall x \in D_f)(x \in H_a^{-} \setminus \{a\} \Rightarrow f(x) \in H_c),
+$$
+respektíve
+$$
+	\lim_{x\rightarrow a_+}f(x)=c \Leftrightarrow (\forall H_c)(\exists H_a^{+})(\forall x \in D_f)(x \in H_a^{+} \setminus \{a\} \Rightarrow f(x) \in H_c).
+$$
+
+% ---------------------------------------------------------
+\subsection{Vlastnosti limit funkcí}
+\theorem Nechť $a\in\mathbb{R}$. Limita $\lim\limits_{x\rightarrow a}f(x)$ existuje a je rovna $c\in\overline{\mathbb{R}}$, právě když existují obě jednostranné limity $\lim\limits_{x\rightarrow a_+}f(x)$ a $\lim\limits_{x\rightarrow a_-}f(x)$ a obě jsou rovny $c$. \hspace{.5cm}$\Rightarrow$\hspace{.5cm} Ak obě jednostranné limity funkce $f$ v bodě $a$ existují a jsou různé, alebo alespoň jedna z jednostranných limit funcke $f$ v bodě $a$ neexistuje, potom limita funkce $f$ v bodě $a$ neexistuje.
+
+\theorem[Heine]\label{th:heine} $\lim\limits_{x\rightarrow a} f(x)=c$, právě když je $f$ definována na okolí bodu $a$ (s možnou výjimkou bodu $a$) a pro každou posloupnost $(x_n)_{n=1}^\infty$ s limitou $a$ a splňující
+$$
+	\{x_n|n\in\mathbb{N}\}\subset D_f\setminus\{a\}
+$$
+platí $\lim\limits_{n\rightarrow\infty} f(x_n)=c$. \hspace{.5cm}$\Rightarrow$\hspace{.5cm} Nechť $f$ je funkce definovaná na okolí bodu $a\in\overline{\mathbb{R}}$ a $(x_n)_{n=1}^{\infty},(z_n)_{n=1}^{\infty}$ jsou dvě reálné posloupnosti patřící do $D_f$, konvergující k $a$ a splňující podmínky $x_n\neq a$ a $z_n\neq a$ pro všechna $n\in\mathbb{N}$. Pokud limity
+$$
+	\lim_{n\rightarrow\infty}f(x_n)\quad\mathrm{a}\quad\lim_{n\rightarrow\infty}f(z_n)
+$$
+existují a jsou různé, nebo alespoň jedna z nich neexistuje, potom limita $\lim\limits_{x\rightarrow a}f(x)$ neexistuje.
+
+\theorem Nechť $f$ a $g$ jsou funcke a $a\in\overline{\mathbb{R}}$. Potom
+$$
+	\lim_a (f+g)=\lim_a f + \lim_a g,
+$$
+$$
+	\lim_a f\cdot g=\lim_a f \cdot \lim_a g,
+$$
+$$
+	\lim_a \frac{f}{g}=\frac{\lim_a f}{\lim_a g},
+$$
+platí v případě, že výrazy na pravé strané jsou definovány a v posledním případě za předpokladu, že $\frac{f}{g}$ je definována na okolí bodu $a$ s možnou výjimkou bodu $a$ samotného.
+
+\theorem[O limitě složené funkce] Nechť $f$ a $g$ jsou funkce, $a, b, c \in \overline{\mathbb{R}}$ a platí tři podmínky
+\vspace{-5pt}
+\begin{enumerate}
+	\item $\lim\limits_{x\rightarrow a}g(x)=b$,
+	\item $\lim\limits_{x\rightarrow b}f(x)=c$,
+	\item buď $(\exists H_a)(\forall x \in D_g\cap H_a\setminus \{a\})(g(x)\neq b)$ nebo $(b\in D_f \mathrm{a} f(b)=c)$.
+\end{enumerate}
+\vspace{-5pt}
+Potom platí $\lim\limits_{x\rightarrow a} f(g(x))=c$.
+
+\theorem[Věta o limitě sevvřené funkce] Nechť pro funkce f, g, h a body platí:
+\vspace{-5pt}
+\begin{enumerate}
+	\item $(\exists H_a)(\forall x \in H_a\setminus \{a\})(f(x)\leq g(x) \leq h(x)$,
+	\item existují $\lim\limits_{x\rightarrow a}f(x)=\lim\limits_{x\rightarrow a}h(x)=c$.
+\end{enumerate}
+\vspace{-5pt}
+Potom existuje i $\lim\limits_{x\rightarrow a}g(x)$ a je rovna $c$.
+
+\theorem[l’Hospitalovo pravidlo] Nechť pro funkce $f$ a $g$ a bod $a \in\overline{\mathbb{R}}$ platí
+\vspace{-5pt}
+\begin{enumerate}
+	\item $\lim\limits_{a}f = \lim\limits_{a}g =0$ nebo $\lim\limits_{a}|g| =+\infty$,
+	\item existuje okolí $H_a$ bodu $a$ splňující $ H_a\setminus \{a\}\subset D_{f/g}\cap D_{f'/g'} $,
+	\item existuje $\lim\limits_a \frac{f'}{g'}$.
+\end{enumerate}
+\vspace{-5pt}
+Potom existuje $\lim\limits_a\frac{f}{g}$ a platí $\lim\limits_a\frac{f}{g} = \lim\limits_a\frac{f'}{g'}$.
+
+% ---------------------------------------------------------
+\subsection{Spojitost funkce}
+
+\theorem[Spojitost funkce] Nechť $f$ je reálná funkce reálné proměnné a nechť bod $a\in D_f$. Řekneme, že funkce $f$ je \textbf{spojitá v bodě} $a$ jestliže nastáva alespoň jedna z nasledujících možností
+\vspace{-5pt}
+\begin{itemize}
+	\item $\lim\limits_{x\rightarrow a}f(x)=f(a)$,
+	\item $(\exists H_a)(H_a\cap D_f=H_a^+)$ a $\lim\limits_{x\rightarrow a+}f(x)=f(a)$,
+	\item $(\exists H_a)(H_a\cap D_f=H_a^-)$ a $\lim\limits_{x\rightarrow a-}f(x)=f(a)$.
+\end{itemize}
+\vspace{-5pt}
+Funkce $f$ je \textbf{spojitá v bodě $a$ zprava}, pokud $\lim\limits_{x\rightarrow a+}f(x)=f(a)$. Funkce $f$ je \textbf{spojitá v bodě $a$ zleva}, pokud $\lim\limits_{x\rightarrow a-}f(x)=f(a)$.
+
+\theorem Funkce $f$ definovaná na okolí bodu $a\in D_f$ je spojitá v bodě $a$, právě když je spojitá v bodě $a$ zleva i zprava.
+
+\textit{Keď to dáva zmysel, súčet, súčin, podiel a zlúčenie dvoch spojitých funkcií je opäť spojitá funkcia.}
+
+% ---------------------------------------------------------
+\subsection{Derivace funkce}
+
+\definition[Derivace funkcie]\label{def:derivace} Nechť $f$ je funkce definovaná na okolí bodu $a\in\mathbb{R}$. Pokud existuje \hyperref[def:limita]{limita}
+$$
+	\lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a},\quad\mathrm{ekvivalentne}\quad\lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h},
+$$
+nazveme její hodnotu \textbf{derivací funkce $f$ bodě $a$} a označíme $f'(a)$. Pokud je tato limita konečná (tj. $f'(a)\in\mathbb{R}$) řekneme, že funkce $f$ je \textbf{diferencovatelná} v bodě $a$.
+
+\definition Buď $f$ funkce s definičním oborem $D_f$. Nechť $M$ označuje množinu všech $a \in D_f$ takových, že existuje konečná derivace $f'(a)$. \textbf{Derivací funkce} $f$ nazýváme funkci s definičním oborem $M$, která každému $x \in M$ přiřadí $f'(x)$. Tuto funkci značíme symbolem $f'$.
+
+\definition Nechť existuje $f'(a)$. Tečnou funkce $f$ v bodě $a$ nazýváme
+\vspace{-5pt}
+\begin{itemize}
+	\item přímku s rovnicí $x = a$ je-li funkce $f$ spojitá v bodě $a$ a $f'(a) = +\infty$ nebo $f' (a) =-\infty$.
+	\item přímku s rovnicí $y = f(a) + f'(a)(x - a)$ je-li $f'(a) \in\mathbb{R}$ (tj. je-li $f$ je diferencovatelná v bodě $a$).
+\end{itemize}
+
+% ---------------------------------------------------------
+\subsection{Vlastnosti derivace}
+
+\theorem Je li funkce $f$ diferencovatelná v bodě $a$, pak je spojitá v bodě $a$.
+$$
+	f'(a)\in\mathbb{R} \quad\Rightarrow\quad \lim_{x\rightarrow a} f(x)=f(a)
+$$
+
+\theorem[Derivace součtu, součinu a podílu] Nechť funkce $f$ a $g$ jsou diferencovatelné v bodě $a$. Potom platí
+\vspace{-5pt}
+\begin{itemize}
+	\item $(f+g)'(a) = f'(a) + g'(a)$
+	\item $ (f\cdot g)'(a) = f'(a)g(a) + f(a)g'(a)$
+	\item $\big( \frac{f}{g} \big)'(a) = \frac{f'(a)g(a)-f(a)g'(a)}{g(a)^2}$, pokud $g(a)\neq0$.
+\end{itemize}
+\vspace{-5pt}
+
+\theorem[Derivace složené funkce] Nechť $g$ je funkce diferencovatelná v bodě $a$, $f$ je diferencovatelná v bodě $g(a)$. Potom funkce $f \circ g$ je diferencovatelná v bodě $a$ a platí
+$$
+	(f\circ g)'(a) = f'(g(a))\cdot g'(a).
+$$
+
+\textit{Videli ste niekedy deriváciu inverznej funkcie?}
+
+% ---------------------------------------------------------
+\subsection{Extrémy funkce}
+
+\definition Řekneme, že funkce $f$ má v bodě $a \in D_f$
+\vspace{-5pt}
+\begin{itemize}
+	\item\textbf{lokální minimum}$\quad\Leftrightarrow\quad (\exists H_a\subset D_f)(\forall x\in H_a)(f(x)\leq f(a)) $
+	\item\textbf{lokální maximum}$\quad\Leftrightarrow\quad (\exists H_a\subset D_f)(\forall x\in H_a)(f(x)\geq f(a)) $
+	\item\textbf{ostré lokální maximum}$\quad\Leftrightarrow\quad (\exists H_a\subset D_f)(\forall x\in H_a\setminus \{a\})(f(x)< f(a)) $
+	\item\textbf{ostré lokální minimum}$\quad\Leftrightarrow\quad (\exists H_a\subset D_f)(\forall x\in H_a\setminus \{a\})(f(x)> f(a)) $
+\end{itemize}
+\vspace{-5pt}
+
+\theorem[Nutná podmínka existence lokálního extrému] Nechť funkce $f$ má v bodě $a$ lokální extrém. Potom $f' (a) = 0$, nebo derivace v bodě $a$ neexistuje.
+
+\theorem[Extrém spojité funkce na uzavřeném intervalu] Funkce $f$ spojitá a definovaná právě na uzavřeném intervalu $\langle a, b\rangle$ nabývá maxima a minima (tzv. \textbf{globální extrém}). Extrém může být pouze v krajních bodech $a, b$ a v bodech kde je derivace rovna 0 nebo neexistuje.
+
+% ---------------------------------------------------------
+\subsection{Vyšetřování průběhu funkce}
+
+\theorem[Rolleova] Nechť funkce $f$ splňuje podmínky
+\vspace{-5pt}
+\begin{itemize}
+	\item $f$ je spojitá na intervalu $\langle a,b \rangle$,
+	\item $f$ má derivaci v každém bodě intervalu $(a,b)$,
+	\item $f(a)=f(b)$.
+\end{itemize}
+\vspace{-5pt}
+Potom existuje $c\in(a,b)$ tak, že $f'(c)=0$.
+
+\theorem[Lagrangeova] Nechť funkce $f$ splňuje podmínky
+\vspace{-5pt}
+\begin{itemize}
+	\item $f$ je spojitá na intervalu $\langle a,b \rangle$,
+	\item $f$ má derivaci v každém bodě intervalu $(a,b)$.
+\end{itemize}
+\vspace{-5pt}
+Potom existuje $c\in(a,b)$ tak, že $f'(c)=\frac{f(b)-f(a)}{b-a}$.
+
+\theorem Buď $f$ funkce spojitá na intervalu $J$, která má druhou derivaci v každém bodě intervalu $J^{\circ}$ (buď $J$ interval s krajnými body $a$ a $b$, potom $J^{\circ}=(a,b)$ ).
+\vspace{-5pt}
+\begin{itemize}
+	\item Funkce $f$ je konvexní na intervalu $J$, právě když $f''(x) \geq 0$ pro každé $x \in J^{\circ}$.
+	\item Je-li $f''(x) > 0$ v každém bodě $x \in J^{\circ}$, pak je $f$ ryze konvexní na $J$.
+	\item Funkce $f$ je konkávní na intervalu $J$, právě když $f''(x) \leq 0$ pro každé $x \in J^{\circ}$.
+	\item Je-li $f''(x) < 0$ v každém bodě $x \in J^{\circ}$, pak je $f$ ryze konkávní na $J$.
+\end{itemize}
+\vspace{-5pt}
+
+
+% =========================================================
+\section{35 -- Základy integrálního počtu (primitivní funkce, neurčitý integrál, Riemannův integrál (definice, vlastnosti a geometrický význam)).}
+
+\definition Nechť $f$ je funkce definovaná na intervalu $(a, b)$, kde $a,b\in\overline{\mathbb{R}}$. Funkci $F$ splňující podmínku
+$$
+	F' (x) = f (x) \mathrm{pro každé} x \in (a, b)
+$$
+nazýváme \textbf{primitivní funkcí} k funkci $f$ na intervalu $(a, b)$.
+
+\theorem Nechť $F$ je primitivní funkcí k funkci $f$ na intervalu $(a, b)$. Pak $G$ je primitivní funkcí k funkci $f$ na intervalu $(a, b)$ právě tehdy, když existuje konstanta $c \in \mathbb{R}$ taková, že
+$$
+	G(x) = F (x) + c, \mathrm{pro každé} x \in (a, b).
+$$
+
+\definition Nechť k funkci $f$ existuje primitivní funkce na intervalu $(a, b)$. Množinu všech primitivních funkcí k funkci $f$ na $(a, b)$ nazýváme \textbf{neurčitým integrálem} a značíme jej $\int f (x) \mathrm{d}x$.
+
+\theorem[Postačující podmínka pro existenci primitivní funkce] Nechť funkce $f$ je spojitá na intervalu $(a, b)$. Pak funkce $f$ má na tomto intervalu primitivní funkci.
+
+\theorem Nechť $F$, resp. $G$, je primitivní funkce k funkci $f$, resp. $g$, na intervalu $(a, b)$ a nechť $\alpha\in\mathbb{R}$. Pak
+\vspace{-5pt}
+\begin{itemize}
+	\item $F + G$ je primitivní funkcí k funkci $f + g$ na intervalu $(a, b)$,
+	\item $\alpha F$ je primitivní funkcí k funkci $\alpha f$ na intervalu $(a, b)$.
+\end{itemize}
+\vspace{-5pt}
+
+\theorem [Per partes] Nechť funkce $f$ je diferencovatelná na intervalu $(a, b)$ a $G$ je primitivní funkce k funkci $g$ na intervalu $(a, b)$ a konečně nechť existuje primitivní funkce k funkci $f' G$. Potom existuje primitivní funkce k funkci $fg$ a platí
+$$
+	\int fg = fG - \int f'G.
+$$
+
+\theorem [Substituce I] Nechť pro funkce $f$ a $\varphi$ platí
+\vspace{-5pt}
+\begin{enumerate}
+	\item $f$ má primitivní funkci $F$ na intervalu $(a, b)$,
+	\item $\varphi$ je na intervalu $(\alpha, \beta)$ diferencovatelná,
+	\item $\varphi((\alpha, \beta)) \subset (a, b)$.
+\end{enumerate}
+\vspace{-5pt}
+Pak funkce $f(\varphi(x)) \cdot \varphi'(x)$ má primitivní funkci na intervalu $(\alpha, \beta)$ a platí
+$$
+	\int f(\varphi(x))\cdot \varphi'(x)\mathrm{d}x = F(\varphi(x)).
+$$
+
+\theorem [Substituce II] Nechť $f$ je definována na intervalu $(a, b)$ a nechť $\varphi$ je bijekce intervalu $(\alpha, \beta)$ na $(a, b)$ s nenulovou konečnou derivací. Pak platí
+$$
+	\int f(\varphi(t))\varphi'(t)\mathrm{d}t=G(t)+C \quad\Rightarrow\quad \int f(x)\mathrm{d}x=G(\varphi^{-1}(x))+C
+$$
+
+% ---------------------------------------------------------
+\subsection{Riemannův integrál}
+\textit{Definica je dlhá, viď skripta. Vlastnosti sú také, ako očákavaš.}
+
+\theorem[Newtonova formule] Nechť $f$ je funkce spojitá na intervalu $\langle a,b\rangle$ s primitivní funkcí $F$. Pak platí rovnost
+$$
+	\int_a^b f(x)\mathrm{d}x = F(b) - F(a) =: \big[ F(x) \big]_a^b
+$$
+
+% =========================================================
+\section{36 -- Číselné řady (konvergence číselné řady, kritéria konvergence, odhadování rychlosti růstu řad pomocí určitého integrálu).}
+
+\definition[Číselná řada]\label{def:rada} Formální výraz tvaru
+$$
+	\sum_{k=0}^{\infty}a_k=a_0+a_1+\dots,
+$$
+kde $(a_k)_{k=0}^{\infty}$ je zadaná \hyperref[def:posloupnost]{číselná posloupnost}, nazýváme \textbf{číselnou řadou}. Pokud je posloupnost částečných součtů
+$$
+	s_n:=\sum_{k=0}^n a_k,\quad n\in\mathbb{N}_0,
+$$
+\hyperref[def:konvergence]{konvergentní}, nazýváme příslušnou řadu také \textbf{konvergentní}. V opačném případě mluvíme o divergentní číselné řadě. \textbf{Součtem} konvergentní řady $\sum_{k=0}^n a_k$ nazýváme hodnotu limity $\lim\limits_{n\rightarrow\infty} s_n$.
+
+% ---------------------------------------------------------
+\subsection{Kritéria konvergence}
+
+\theorem[Nutná podmínka konvergence]\label{th:nutna_konvergence} Pokud řada $\sum_{k=0}^{\infty}a_k$ konverguje, potom pro limitu jejích sčítanců platí $\lim\limits_{k\rightarrow\infty} a_k = 0$. \hspace{.5cm}$\Rightarrow$\hspace{.5cm} Pokud limita posloupnosti $(a_k)_{k=0}$ je nenulová nebo neexistuje, potom řada $\sum_{k=0}^{\infty} a_k$ není konvergentní.
+
+\theorem[Bolzano-Cauchy] Řada $\sum_{k=0}^{\infty} a_k$ konverguje právě tehdy, když pro každé $\varepsilon >0$ existuje $n_0\in\mathbb{R}$ tak, že pro každé $n \geq n_0$ a $p\in\mathbb{N}$ platí
+$$
+	|a_n+a_{n+1}+\dots+a_{n+p}|<\varepsilon.
+$$
+
+\definition[Absolutní konvergentnost] \label{def:abs_konv} Číselnou řadu $\sum_{k=0}^{\infty} a_k$ nazýváme \textbf{absolutně konvergentní}, pokud číselná řada $\sum_{k=0}^{\infty} |a_k|$ konverguje.
+
+\theorem Pokud řada \hyperref[def:abs_konv]{absolutně konverguje}, potom tato řada \hyperref[def:rada]{konverguje}.
+
+\theorem[Leibnizovo kritérium] Buď $(a_k)_{k=0}^{\infty}$ klesající posloupnost s nezápornými členy konvergujíci k nule. Potom je řada
+$$
+	\sum_{k=0}^{\infty}(-1)^k a_k
+$$
+konvergentní. Toto kritérium platí i pokud je $(a_k)_{k=0}^{\infty}$ rostoucí posloupnost záporných čísel konvergující k nule.
+
+\theorem [Srovnávací kritérium] Buďte $\sum_{k=0}^{\infty} a_k$ a $\sum_{k=0}^{\infty} b_k$ číselné řady. Potom platí následující dvě tvrzení.
+\vspace{-5pt}
+\begin{enumerate}
+	\item Nechť pro každé $k\in\mathbb{N}$ platí nerovnosti $0\leq |a_k|\leq b_k$ a nechť řada $\sum_{k=0}^{\infty} b_k$ konverguje. Potom řada $\sum_{k=0}^{\infty} a_k$ absolutně konverguje.
+	\item Nechť pro každé $k\in\mathbb{N}$ platí nerovnosti $0\leq a_k\leq b_k$ a $\sum_{k=0}^{\infty} a_k$ diverguje. Potom i řada $\sum_{k=0}^{\infty} b_k$ diverguje.
+\end{enumerate}
+\vspace{-5pt}
+
+\theorem [d'Alembertovo kritérium] Nechť $a_k > 0$ pro každé $k \in\mathbb{N}_0$ . Pokud
+$$
+	\lim_{k\rightarrow\infty}\frac{a_k+1}{a_k}>1,
+$$
+potom řada $\sum_{k=0}^{\infty} a_k$ diverguje. Pokud ovšem
+$$
+	\lim_{k\rightarrow\infty}\frac{a_k+1}{a_k}<1,
+$$
+potom řada $\sum_{k=0}^{\infty} a_k$ konverguje.

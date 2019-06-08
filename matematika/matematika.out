@@ -1,0 +1,29 @@
+\BOOKMARK [0][-]{chapter.1}{BI-LIN, Line\341rn\355 algebra}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Background}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{12 \205 Soustavy line\341rn\355ch rovnic: Frobeniova veta a souvisej\355c\355 pojmy, vlastnosti a popis mno\236iny re\235en\355, Gaussova eliminacn\355 metoda.}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{13 \205 Matice: soucin matic, regul\341rn\355 matice, inverzn\355 matice a jej\355 v\375pocet, vlastn\355 c\355sla matice a jejich v\375pocet, diagonalizace matice.}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{BI-MLO, Matematick\341 logika}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Background}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{14 \205 V\375rokov\341 logika: syntax a s\351mantika v\375rokov\375ch formul\355, pravdivostn\355 ohodnocen\355, logick\375 dusledek, ekvivalence a jejich zji\235tov\341n\355. Univers\341ln\355 syst\351m logick\375ch spojek, disjunktivn\355 a konjunktivn\355 norm\341ln\355 tvary, \372pln\351 a minim\341ln\355 tvary.}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{15 \205 Predik\341tov\341 logika: jazyk, interpretace, pravdivost formul\355, logick\375 dusledek a ekvivalence. Formalizace matematick\375ch tvrzen\355 a jejich negace. Teorie a jejich modely \(napr. uspor\341d\341n\355\).}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{BI-PST, Pravdepodobnost a statistika}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Background}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{25 \205 Pravidla pro v\375pocty pravdepodobnost\355, Bayesuv vzorec. N\341hodn\351 veliciny, pr\355klady rozdelen\355, distribucn\355 funkce, hustota, momenty. Nez\341vislost n\341hodn\375ch jevu a velicin. Centr\341ln\355 limitn\355 veta, z\341kony velk\375ch c\355sel.}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.3}{26 \205 Z\341klady statistick\351 indukce, n\341hodn\375 v\375ber, bodov\351 odhady pro stredn\355 hodnotu a rozptyl, intervalov\351 odhady pro stredn\355 hodnotu, testov\341n\355 statistick\375ch hypot\351z o stredn\355 hodnote.}{chapter.3}% 12
+\BOOKMARK [0][-]{chapter.4}{BI-ZDM, Z\341klady diskr\351tn\355 matematiky}{}% 13
+\BOOKMARK [1][-]{section.4.1}{Background}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.2}{32 \205 Metody re\235en\355 rekurentn\355ch rovnic, sestavov\341n\355 a re\235en\355 rekurentn\355ch rovnic pri anal\375ze casov\351 slo\236itosti algoritmu.}{chapter.4}% 15
+\BOOKMARK [1][-]{section.4.3}{33 \205 Modul\341rn\355 aritmetika, z\341klady teorie c\355sel, Mal\341 Fermatova veta, diofantick\351 rovnice, line\341rn\355 kongruence, C\355nsk\341 veta o zbytc\355ch.}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter.5}{BI-ZMA, Z\341klady matematick\351 anal\375zy}{}% 17
+\BOOKMARK [1][-]{section.5.1}{Background}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.2}{34 \205 Limita a derivace funkce \(definice a vlastnosti, geometrick\375 v\375znam\), vyu\236it\355 pri vy\235etrov\341n\355 prubehu funkce.}{chapter.5}% 19
+\BOOKMARK [2][-]{subsection.5.2.1}{Vlastnosti limit funkc\355}{section.5.2}% 20
+\BOOKMARK [2][-]{subsection.5.2.2}{Spojitost funkce}{section.5.2}% 21
+\BOOKMARK [2][-]{subsection.5.2.3}{Derivace funkce}{section.5.2}% 22
+\BOOKMARK [2][-]{subsection.5.2.4}{Vlastnosti derivace}{section.5.2}% 23
+\BOOKMARK [2][-]{subsection.5.2.5}{Extr\351my funkce}{section.5.2}% 24
+\BOOKMARK [2][-]{subsection.5.2.6}{Vy\235etrov\341n\355 prubehu funkce}{section.5.2}% 25
+\BOOKMARK [1][-]{section.5.3}{35 \205 Z\341klady integr\341ln\355ho poctu \(primitivn\355 funkce, neurcit\375 integr\341l, Riemannuv integr\341l \(definice, vlastnosti a geometrick\375 v\375znam\)\).}{chapter.5}% 26
+\BOOKMARK [2][-]{subsection.5.3.1}{Riemannuv integr\341l}{section.5.3}% 27
+\BOOKMARK [1][-]{section.5.4}{36 \205 C\355seln\351 rady \(konvergence c\355seln\351 rady, krit\351ria konvergence, odhadov\341n\355 rychlosti rustu rad pomoc\355 urcit\351ho integr\341lu\).}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.4.1}{Krit\351ria konvergence}{section.5.4}% 29

@@ -1,0 +1,151 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{todonotes}
+
+% margins
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+
+% spacing
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+% fonts (the same as NIPS 2016)
+% \renewcommand{\rmdefault}{ptm}
+% \renewcommand{\sfdefault}{phv}
+
+% citations
+\usepackage[style=iso-numeric,backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+\newtheoremstyle{myStyle}
+  {20pt} % Space above
+  {20pt} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {:} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{myStyle}
+\newtheorem{definition}{Definice}[subsection]
+
+\theoremstyle{myStyle}
+\newtheorem{theorem}{Věta}[subsection]
+
+% -----------------------------------------------------------------------------
+
+\title{Přehled matematických vět a definic.\vspace{-1em}}
+% \author{Matej Choma}
+\date{\vspace{-1em}\today}
+
+\begin{document}
+
+\maketitle
+
+\input{./lin.tex}
+
+\input{./mlo.tex}
+
+\input{./pst.tex}
+
+\input{./zdm.tex}
+% \clearpage
+
+\input{./zma.tex}
+
+% \clearpage
+
+% V tejto otázke budeme hľadať čo najkratšie cesty v stavovom priestore s ohodnotenými akciami. Tento priestor si môžeme predstaviť ako neorientovaný graf s ohodnotenými hranami. 
+% \begin{definition}[Stavový priestor s ohodnotenými akciami]
+% Nech $(S,A)$ je stavový priestor, kde $S$ je množina javov a $A$ je množina akcií. Trojicu $(S,A,c)$, kde $c$ je funkcia $A\rightarrow\mathbb{R}_0^+$, nazývame stavový priestor s ohodnotenými akciami. Hodnota $c(a)$ priraďuje cenu každej akcií $a\in A$.
+% \end{definition}
+
+% Všetky spomenuté algoritmy pracujú s expanziou stavu. Pri expanzií pridáme do poolu možných nasledujúcich stavov $OPEN$, všetkých susedov expanzovaného stavu, ktorých sme ešte neobjavili.
+
+% % =========================================================
+% \section{Dijkstrov algoritmus}
+% Dijkstrov algoritmus nájde najkratšiu cestu z počiatočného stavu do všetkých ostatných v čase $\mathcal{O}(|A|+|S|\cdot\log(|S|))$.
+
+% Myšlienka algoritmu spočíva v udržovaní si najkratšej známej cesty $g(s)$ z počiatočného vrcholu do vrcholu $s$ pre všetky vrcholy $s\in OPEN$, ktoré sme už objavili. Vždy sa expanduje stav $s^*\in OPEN$ s najkratšou cestou z počiatočného stavu
+% $$
+% 	s^*\in\arg\min_{s\in OPEN}g(s).
+% $$
+% Pokiaľ sme expanziou našli kratšiu cestu do nejakého stavu $s\in OPEN$, dĺžku cesty upravíme. Rozmyslite si, že v momente expanzie stavu už nemôže existovať kratšia cesta do tohto stavu ako tá, ktorú poznáme. Vizualizácia behu algoritmu sa dá nájsť na \url{https://www.cs.usfca.edu/~galles/visualization/Dijkstra.html}.
+
+% % =========================================================
+% \section{Informované prehľadavánie stavového priestoru}
+% Dijkstra je ako BFS berúce odhad na dĺžku cesty od počiatočnéhos tavu. Nájde síce optimálne riešenie, no expanduje príliš veľa vrcholov na všetky strany a teda je v praxi pomalý. Jeden so spôsobov ako expandovať vrcholy inteligentnejšie smerom ku cielu je \textbf{heuristika}.
+
+% \begin{definition}[Heuristika]
+% 	Nech $(S,A,c)$ je stavový priestor s ohodnotenými hranami a $G\subseteq S$ je množina koncových stavov pre úlohu prehľadávania tohto priestoru. \textbf{Heuristika} $h$ je ľubovoľná funkcia
+% 	$$h: S\rightarrow \mathbb{R}_0^+$$
+% 	taká, že $h(s)$ udáva odhad ceny cesty zo stavu $s\in S$ ku najbližšiemu $s_g\in G$ a pre všetky $s_g \in G$ platí $h(s_g)=0$.
+% \end{definition}
+
+% % -----------------------------------------------
+% \subsection{Greedy search}
+% Algoritmus, ktorý v každom kroku expanduje vrchol $s^*$ s najmenšou hodnotou heuristickej funkcie (teoreticky najbližšie ku cielu):
+% $$ s^*\in\arg\min_{s\in OPEN}h(s).$$
+
+% Greedy search má niekoľko problémov:
+% \begin{itemize}
+% 	\item algoritmus nenájde najkratšiu cestu (Fig. \ref{fig:greedy})
+% 	\item rýchlosť a kvalita výsledku závisí od rýchlosti výpočtu a kvality heuristiky
+% \end{itemize}
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=.5\linewidth]{fig/greedy.png}
+% 	\caption{Greedy search nenájde najkratšiu cestu.}
+% 	\label{fig:greedy}
+% \end{figure}
+
+% % -----------------------------------------------
+% \subsection{Algoritmus A*}
+% Algoritmus A* kombinuje oba zmienené postupy, čím sa snaží eliminovať problémy. Označme $g(s)$ cenu cesty od počiatočného vrcholu vypočítanú pomocou Dijkstru a $h(s)$ hodnotu heuristiky. Potom A* expanduje vrchol $s^*$, ktorý minimalizuje súčet týchto dvoch vzdialeností:
+% $$ s^*\in\arg\min_{s\in OPEN}\big ( h(s) + g(s) \big ).$$
+
+% Vizualizácia sa nachádza na \url{http://www.jsgl.org/doku.php?id=pathfinder}.
+
+% % -----------------------------------------------
+% \subsection{Štúdium heuristík}
+% \begin{definition}[Optimálna heuristika]
+% 	\textbf{Optimálnou heuristikou $h^*$} nazývame takú heuristiku, ktorá vracia skutočnú cenu cesty do cieľového stavu. V praxi je z výpočetných dôvodov nesplniteľným snom -- vieme ju vypočítať hrubou silou, to nám ale algoritmus používajúci túto heuristiku nezrýchli. Má dôležktý teoretický význam -- lepšia heuristika sa nedá skonštruovať.
+% \end{definition}
+
+% \begin{definition}[Prípustná heuristika]
+% 	Nech $(S,A,c)$ je stavový priestor s ohodnotenými hranami a $h$ je heuristika. Heuristiku $h$ nazývame \textbf{prípustnou} pokiaľ
+% 	$$ \forall s \in S:h(s)\leq h^*(s). $$
+% \end{definition}
+
+% \begin{definition}[Monotónna heuristika]
+% 	Nech $(S,A,c)$ je stavový priestor s ohodnotenými hranami a $h$ je heuristika. Heuristiku $h$ nazývame \textbf{monotónnou} pokiaľ
+% 	$$ \forall x,y \in S, \forall (x,y) \in A:h(x)\leq h(y) + c(x,y). $$
+% 	Neformálne, heuristika stavu $s\in S$ je vždy menšia rovná heuristike každého zo susedných stavou plus cena cesty do daného stavu.
+% \end{definition}
+
+% \begin{definition}[Dominujúca heuristika]
+% 	Nech $(S,A,c)$ je stavový priestor s ohodnotenými hranami a $h_1$ a $h_2$ sú \textit{prípustné} heuristiky. Heuristika $h_1$ \textbf{dominuje} heuristiku $h_2$ pokiaľ
+% 	$$ \forall s \in S:h_1(s)\leq h_2(s). $$
+% 	Heuristika $h^*$ dominuje všetky prípustné heuristiky. Neformálne, ak heuristika $h_1$ dominuje heuristiku $h_2$, znamená to, že $h_1$ lepšie odhaduje optimálnu heuristiku.
+% \end{definition}
+
+
+% \printbibliography
+
+\end{document}
