@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=20mm,
+ right=20mm,
+ top=10mm	
+ }
+
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[section]{placeins}
+
+
+\newtheorem{theorem}{Definice}
+
+
+\title{BI-ZUM + BI-ZNS - Multiagentní systémy, typy agentů, vlastnosti a požadavky na agenty, organizace multiagentního systému (kooperace, kompetice, koordinace, vyjednávání, komunikace), metoda tabule.}
+\author{Vastl Martin}
+
+\begin{document}
+\maketitle
+\author
+
+Multiagentní systémy je kolekce několika nezávislých agentů umístěných ve sdíleném prostředí, z nichž každý vnímá okolní prostedí, jedná tak, aby dosáhl svých cílů a interaguje s ostatními agenty.
+
+\section{Typy agentů}
+Typy agentů dle ZNS:
+\begin{itemize}
+\item Reaktivní agent - reaguje na podněty z okolí tím způsobem, že má předem danou množinu možných akcí, které může provádět, ze 
+které vybírá tu nejvhodnější akci
+\item Intencionální agent - zvažuje své možnosti jak dosáhnout cíle. Je tedy motivován k tomu, aby reagoval co nejlépe. 
+\item Sociální (modelový) agent - má k dispozici modely chování 
+ostatních agentů a může je tak využívat ke svému rozhodování
+\item Hybridní agent - může vykazovat vlastnosti výše zmíněných typů 
+agentů podle nastalé situace
+\end{itemize}
+
+Typy agentů dle ZUM:
+\begin{itemize}
+\item izolovaní - ekvivalent single-agentního systému
+\item kooperativní - jednající společně za účelem dosažení týmového cíle
+\item self-interested - každý maximalizuje své vlastní dobro, zvažuje ostatní agenty
+\item kombinace výše uvedených - spolupracující s jedněmi a soutěžící s jinými agenty
+\end{itemize}
+
+\section{Obecné vlastnosti kladené na agenty}
+\begin{enumerate}
+\item autonomní - pracuje bez zásahu z vnějšku, do jisté míry řídí své akce,
+\item sociální - interaguje s ostatními agenty,
+\item reaktivní - vnímá okolí a reaguje na jeho změny,
+\item proaktivní - sám se iniciativně pouští do řešení problémů
+\item mobilní - působit aspoň virtuálně na různých místech. Umístění v konkrétním místě prostředí je považováno za důležitou vlastnost. 
+\item korektní - neposkytovat vědomě nepravdivé informace
+\item benevolentní - snažit se udělat to, o co je žádán,
+\item racionální -  jednat tak, aby dosáhl svých cílů.
+\end{enumerate}
+
+\section{Důležité další vlastnosti agentů}
+\begin{enumerate}
+\item vysílat a přijímat informace od ostatních agentů,
+\item zpracovávat informace a činit z nich závěry, tj. brát je v úvahu při dalším rozhodování
+\item provádět akce. Ty se mohou navíc časem měnit.
+\item uvažovat o schopnostech ostatních agentů,
+\item generovat cíle a plány pro sebe i ostatní agenty,
+\item kooperovat s ostatními, tj. vyjednávat o rozdělení úkolů, činit  závazky a uzavírat smlouvy
+\item modifikovat a aktualizovat modely chování.
+\end{enumerate}
+
+\section{Požadavky na agenty}
+Fyzická struktura spolu s vlastnostmi a požadavky kladenými na jednotlivé části (agenti + komunikační síť).
+\begin{itemize}
+\item pokrytí, tj. je třeba zajistit, aby každé podúloze byla přidělena skupina agentů, která ji dovede řešit,
+
+\item spojení, tj. aby agenti si byli schopni mezi sebou předávat informace, tj. byli schopni kooperovat a vyměňovat si dílčí výsledky,
+
+\item výpočetní potenciál, tj. dostatečné možnosti agentů daný problém zvládnout
+\end{itemize}
+
+\section{Organizace multiagentního systému}
+\begin{itemize}
+\item Kooperace - schopnosti jednotlivých agentů vzájemně spolupracovat (sdělování dílčích výsledků, plánů, získávání informací) 
+\item
+Kompetice
+(soutěživost mezi agenty) 
+-
+ostatní agenti jsou 
+bráni za konkurenty. Snaha maximalizovat svůj vlastní zisk.
+\item
+Koordinace
+(součinnost kooperujících agentů) 
+-
+zvýšit 
+pravděpodobnost a rychlosti dosažení stanovených cílů. 
+Koordinace realizuje kooperaci.
+\item
+Vyjednávání
+–
+cílem je odstranit rozpory mezi agenty, 
+vyvarovat se konfliktům, maximálně využít dostupné zdroje 
+apod. Vyjednávací protokol. Kooperujících i kompetiční 
+agenti.
+\item 
+Komunikace
+-
+způsob předávání informací mezi agenty. Je 
+prostředkem zejména pro kooperaci agentů.
+\end{itemize}
+
+
+\section{Nepřímá komunikace - metoda tabule}
+Tabule je datová struktura, ve které se uchovávají informace 
+poskytované jednotlivými agenty a zároveň zdroj informací 
+pro ostatní agenty. Tabule se skládá ze dvou částí
+\begin{enumerate}
+\item datová část
+tabule 
+-
+veškeré informace související s řešeným 
+problémem (vstupní data, dílčí mezivýsledky, alternativní 
+výsledky, konečná řešení). Obsah tabule datové části tabule 
+se mění podle příspěvků jednotlivých agentů.
+
+\item řídící část
+tabule 
+-
+indikace položek pro zpracování, případně 
+za aktivaci příslušných agentů, kteří jsou pověřeni 
+zpracováním dané informace. Dále spravuje seznam priorit, 
+ve kterém mají být 
+podúlohy
+zpracovány, ruší dosažené 
+mezivýsledky, sleduje splnění některých ukazatelů (splnění 
+nějaké hypotézy) apod.
+\end{enumerate}
+
+Obecné zásady při rozdělování úlohy na podúlohy (s pomocí tabule):
+\begin{itemize}
+
+\item každý agent provede změny na tabuli, tj. aktualizuje nebo 
+poskytne nové informace o dosavadním řešení,
+
+\item
+každý agent oznámí jaké 
+podúlohy
+na tabuli je schopen řešit,
+
+\item
+řídící část tabule vybere na základě právě aktualizovaných 
+informací v tabuli agenty, kteří jsou schopni řešit uvedené 
+podúlohy
+a těm tyto 
+podúlohy
+přiřadit.
+\end{itemize}
+
+Nevýhodou využití tabule je značná obecnost. 
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
